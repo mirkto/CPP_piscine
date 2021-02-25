@@ -1,4 +1,4 @@
 all:
-	clang++ main.cpp phonebook.cpp -std=c++98 -Wall -Werror -Wextra -o phonebook
+	clang++ -Wall -Werror -Wextra -std=c++98 main.cpp ClassPhonebook.cpp ClassContact.cpp -o phonebook
 clean:
 	rm -rf phonebook

@@ -1,4 +1,4 @@
-#include "phonebook.hpp"
+#include "ClassPhonebook.hpp"
 
 void	start_book(void)
 {
@@ -34,7 +34,7 @@ void	loop_menu(std::string *buff)
 
 int		main(void)
 {
-	phonebook		book;
+	classPhonebook		book;
 	std::string		buff;
 
 	start_book();
