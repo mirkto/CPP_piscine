@@ -12,6 +12,13 @@
 
 #include "Fixed.hpp"
 
+#define POW_2_TO_8 256
+// pow(2, this->_shift);
+	// int		ft_pow = 1;
+	// for (int i = this->_shift; i > 0; i--)
+	// 	ft_pow *= 2;
+// 2 ^ this->_shift = 256;
+
 Fixed::Fixed() : _rawBits(0)
 {
 	std::cout << "Default constructor called\n";
@@ -36,11 +43,10 @@ Fixed::Fixed(float const num)
 {
 	std::cout << "Float constructor called\n";
 
-	int		ft_pow = 1;
-	for (int i = this->_shift; i > 0; i--)
-		ft_pow *= 2;
+	// int	tmp = POW_2_TO_8;
+	int		tmp = 1 << this->_shift;
 
-	this->_rawBits = roundf(num * ft_pow);
+	this->_rawBits = roundf(num * tmp);
 	return ;
 }
 
@@ -73,11 +79,10 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat(void) const
 {
-	int		ft_pow = 1;
-	for (int i = this->_shift; i > 0; i--)
-		ft_pow *= 2;
+	// int	tmp = POW_2_TO_8;
+	int		tmp = 1 << this->_shift;
 
-	return static_cast<float>(this->_rawBits) / ft_pow;
+	return (float)this->_rawBits / tmp;
 }
 
 int		Fixed::toInt(void) const
