@@ -12,12 +12,14 @@
 
 #include "Fixed.hpp"
 
-#define POW_2_TO_8 256
-// pow(2, this->_shift);
+#define POW_2_TO_8	256
+// pow(2, Fixed::_shift);
 	// int		ft_pow = 1;
-	// for (int i = this->_shift; i > 0; i--)
+	// for (int i = Fixed::_shift; i > 0; i--)
 	// 	ft_pow *= 2;
-// 2 ^ this->_shift = 256;
+// 2 ^ Fixed::_shift = 256;
+
+int const Fixed::_shift = 8;
 
 Fixed::Fixed() : _rawBits(0)
 {
@@ -35,6 +37,8 @@ Fixed::Fixed(Fixed const & src)
 Fixed::Fixed(int const num)
 {
 	std::cout << "Int constructor called\n";
+
+	// this->_rawBits = num * POW_2_TO_8;
 	this->_rawBits = num << Fixed::_shift;
 	return ;
 }
@@ -43,10 +47,10 @@ Fixed::Fixed(float const num)
 {
 	std::cout << "Float constructor called\n";
 
-	// int	tmp = POW_2_TO_8;
-	int		tmp = 1 << this->_shift;
-
-	this->_rawBits = roundf(num * tmp);
+	// this->_rawBits = roundf(num * POW_2_TO_8);
+	int		integer_part = (int)num << Fixed::_shift;
+	float	fraction_part = (num - (int)num) * (1 << Fixed::_shift);
+	this->_rawBits = roundf(integer_part + fraction_part);
 	return ;
 }
 
@@ -79,19 +83,18 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat(void) const
 {
-	// int	tmp = POW_2_TO_8;
-	int		tmp = 1 << this->_shift;
-
-	return (float)this->_rawBits / tmp;
+	// return (float)this->_rawBits / POW_2_TO_8;
+	return (float)this->_rawBits / (1 << Fixed::_shift);
 }
 
 int		Fixed::toInt(void) const
 {
+	// return this->_rawBits / POW_2_TO_8;
 	return this->_rawBits >> Fixed::_shift;
 }
 
-std::ostream	&	operator<<(std::ostream & o, Fixed const & rhs )
+std::ostream	&	operator<<(std::ostream & out, Fixed const & rhs )
 {
-	o << rhs.toFloat();
-	return o;
+	out << rhs.toFloat();
+	return out;
 }
