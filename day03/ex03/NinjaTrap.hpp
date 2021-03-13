@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   NinjaTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngonzo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef NINJATRAP_HPP
+# define NINJATRAP_HPP
 
 # include <iostream>
 # include "ClapTrap.hpp"
@@ -24,20 +24,20 @@
 #define CLR_PRP "\033[0;35m"
 #define CLR_END "\033[0m"
 
-class ScavTrap : public ClapTrap
+class NinjaTrap : public ClapTrap
 {
 private:
-	ScavTrap();
+	NinjaTrap();
 
 public:
-	ScavTrap(std::string name);
-	ScavTrap(ScavTrap const & src);
-	~ScavTrap();
+	NinjaTrap(std::string name);
+	NinjaTrap(NinjaTrap const & src);
+	~NinjaTrap();
 
-	ScavTrap &	operator=(ScavTrap const & src);
+	NinjaTrap &	operator=(NinjaTrap const & src);
 
 	// Special move
-	void	challengeNewcomer(std::string const & target);
+	void	ninjaShoebox(std::string const & target);
 };
 
 #endif

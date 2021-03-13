@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngonzo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/12 18:06:32 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/12 18:06:34 by ngonzo           ###   ########.fr       */
+/*   Created: 2021/03/12 17:15:06 by ngonzo            #+#    #+#             */
+/*   Updated: 2021/03/12 17:15:08 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
 # include <iostream>
 # include "ClapTrap.hpp"
@@ -21,23 +21,22 @@
 #define CLR_YLW "\033[0;33m"
 #define CLR_BLU "\033[0;34m"
 #define CLR_RED "\033[0;31m"
-#define CLR_PRP "\033[0;35m"
 #define CLR_END "\033[0m"
 
-class ScavTrap : public ClapTrap
+class FragTrap : public ClapTrap
 {
 private:
-	ScavTrap();
+	FragTrap();
 
 public:
-	ScavTrap(std::string name);
-	ScavTrap(ScavTrap const & src);
-	~ScavTrap();
+	FragTrap(std::string name);
+	FragTrap(FragTrap const & src);
+	~FragTrap();
 
-	ScavTrap &	operator=(ScavTrap const & src);
+	FragTrap &	operator=(FragTrap const & src);
 
 	// Special move
-	void	challengeNewcomer(std::string const & target);
+	void	vaulthunter_dot_exe(std::string const & target);
 };
 
 #endif
