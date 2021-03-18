@@ -12,10 +12,15 @@
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : _name("Defalt"), _hitPoints(100),
-_maxHitPoints(100), _energyPoints(50), _maxEnergyPoints(50),
-_level(1), _meleeAttackDamage(20), _rangedAttackDamage(15),
-_armorDamageReduction(3) {std::cout << "\n" << this->getName() << " is here!\n";}
+// ClapTrap::ClapTrap() : _name("Defalt"), _hitPoints(100),
+// _maxHitPoints(100), _energyPoints(120), _maxEnergyPoints(120),
+// _level(1), _meleeAttackDamage(60), _rangedAttackDamage(20),
+// _armorDamageReduction(5) {std::cout << "\n" << this->getName() << " is here!\n";}
+
+ClapTrap::ClapTrap() : _name("Defalt"), _hitPoints(1),
+_maxHitPoints(1), _energyPoints(1), _maxEnergyPoints(1),
+_level(1), _meleeAttackDamage(1), _rangedAttackDamage(1),
+_armorDamageReduction(1) {std::cout << "\n" << this->getName() << " is here!\n";}
 
 ClapTrap::ClapTrap(std::string name, unsigned int HP, unsigned int maxHP,
 	unsigned int EP, unsigned int maxEP, unsigned int level,
@@ -95,6 +100,8 @@ std::string		ClapTrap::getName() const
 		return this->_type + CLR_PRP" " + this->_name + CLR_END;
 	if (this->_type == "NinjaTrap")
 		return this->_type + CLR_GRN" " + this->_name + CLR_END;
+	if (this->_type == "SuperTrap")
+		return this->_type + CLR_PRP" " + this->_name + CLR_END;
 	return "Unknow type " + this->_name;
 }
 

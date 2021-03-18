@@ -40,17 +40,24 @@ ScavTrap &		ScavTrap::operator=(ScavTrap const & src)
 	// Special move --------------------------------------------------------
 void	ScavTrap::challengeNewcomer(std::string const & target)
 {
-	std::cout << this->getName() << " throws challenge Newcomer!\n In game..\n Rock\n Paper\n Scissors\n";
-	int i = rand() % 5;
-	if (i == 0)
-		std::cout << this->getName() << ": Rock\n	    " << target << ": Rock\nDraw!\n\n";
-	if (i == 1)
-		std::cout << this->getName() << ": Paper\n	    " << target << ": Paper\nDraw!\n\n";
-	if (i == 2)
-		std::cout << this->getName() << ": Scissors\n	    " << target << ": Scissors\nDraw!\n\n";
-	if (i == 3)
-		std::cout << this->getName() << ": Paper\n	    " << target << ": Rock\n!!!" << this->getName() << " is won!!!\n\n";
-	if (i == 4)
-		std::cout  << this->getName() << ": Paper\n	    " << target << ": Scissors\n!!!" << target << " is won!!!\n\n";
+	std::cout << this->getName() << " use challenge Newcomer!\n";
+	if (this->_energyPoints < 15)
+		std::cout << "Not enough energy for use special move!\n";
+	else
+	{
+		this->_energyPoints -= 15;
+		std::cout << this->getName() << "In game..\n Rock\n Paper\n Scissors\n";
+		int i = rand() % 5;
+		if (i == 0)
+			std::cout << this->getName() << ": Rock\n	    " << target << ": Rock\nDraw!\n\n";
+		if (i == 1)
+			std::cout << this->getName() << ": Paper\n	    " << target << ": Paper\nDraw!\n\n";
+		if (i == 2)
+			std::cout << this->getName() << ": Scissors\n	    " << target << ": Scissors\nDraw!\n\n";
+		if (i == 3)
+			std::cout << this->getName() << ": Paper\n	    " << target << ": Rock\n!!!" << this->getName() << " is won!!!\n\n";
+		if (i == 4)
+			std::cout  << this->getName() << ": Paper\n	    " << target << ": Scissors\n!!!" << target << " is won!!!\n\n";
+	}
 	return ;
 }

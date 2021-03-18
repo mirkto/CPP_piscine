@@ -1,22 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngonzo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/12 18:06:32 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/12 18:06:34 by ngonzo           ###   ########.fr       */
+/*   Created: 2021/03/17 20:52:49 by ngonzo            #+#    #+#             */
+/*   Updated: 2021/03/17 20:52:52 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
-
-# include <iostream>
-# include "ClapTrap.hpp"
-
-#define CLR_WHT_U "\033[4;37m"
 #define CLR_GRN "\033[0;32m"
 #define CLR_YLW "\033[0;33m"
 #define CLR_BLU "\033[0;34m"
@@ -24,21 +17,38 @@
 #define CLR_PRP "\033[0;35m"
 #define CLR_END "\033[0m"
 
-class ScavTrap : public ClapTrap
+#include "AWeapon.hpp"
+#include "Character.hpp"
+#include "Enemy.hpp"
+#include "PlasmaRifle.hpp"
+#include "PowerFist.hpp"
+#include "RadScorpion.hpp"
+#include "SuperMutant.hpp"
+
+int			main()
 {
-private:
-	ScavTrap();
+	{
+	Character* me = new Character("me");
 
-public:
-	ScavTrap(std::string name);
-	ScavTrap(ScavTrap const & src);
-	virtual ~ScavTrap();
+	std::cout << *me;
 
-	ScavTrap &	operator=(ScavTrap const & src);
+	Enemy* b = new RadScorpion();
 
-	// Special move
-	void	challengeNewcomer(std::string const & target);
-};
+	AWeapon* pr = new PlasmaRifle();
+	AWeapon* pf = new PowerFist();
 
-#endif
+	me->equip(pr);
+	std::cout << *me;
+	me->equip(pf);
 
+	me->attack(b);
+	std::cout << *me;
+	me->equip(pr);
+	std::cout << *me;
+	me->attack(b);
+	std::cout << *me;
+	me->attack(b);
+	std::cout << *me;
+	}
+	return 0;
+}

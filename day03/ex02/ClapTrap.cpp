@@ -87,7 +87,13 @@ std::string		ClapTrap::getEP() const
 
 std::string		ClapTrap::getName() const
 {
-	return this->_type + CLR_PRP" " + this->_name + CLR_END;
+	if (this->_type == "ClapTrap")
+		return this->_type + this->_name;
+	if (this->_type == "FragTrap")
+		return this->_type + CLR_YLW" " + this->_name + CLR_END;
+	if (this->_type == "ScavTrap")
+		return this->_type + CLR_PRP" " + this->_name + CLR_END;
+	return "Unknow type " + this->_name;
 }
 
 	// Normal move --------------------------------------------------------

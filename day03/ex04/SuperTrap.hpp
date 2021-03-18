@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   SuperTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngonzo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef SUPERTRAP_HPP
+# define SUPERTRAP_HPP
 
 # include <iostream>
-# include "ClapTrap.hpp"
+# include "FragTrap.hpp"
+# include "NinjaTrap.hpp"
 
 #define CLR_WHT_U "\033[4;37m"
 #define CLR_GRN "\033[0;32m"
@@ -24,21 +25,21 @@
 #define CLR_PRP "\033[0;35m"
 #define CLR_END "\033[0m"
 
-class ScavTrap : public ClapTrap
+class SuperTrap : public NinjaTrap, public FragTrap
 {
 private:
-	ScavTrap();
+	SuperTrap();
 
 public:
-	ScavTrap(std::string name);
-	ScavTrap(ScavTrap const & src);
-	virtual ~ScavTrap();
+	SuperTrap(std::string name);
+	SuperTrap(SuperTrap const & src);
+	virtual ~SuperTrap();
 
-	ScavTrap &	operator=(ScavTrap const & src);
+	SuperTrap &	operator=(SuperTrap const & src);
 
-	// Special move
-	void	challengeNewcomer(std::string const & target);
+	void	meleeAttack(std::string const & target);
+	void	rangedAttack(std::string const & target);
+
 };
 
 #endif
-

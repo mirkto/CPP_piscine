@@ -37,10 +37,11 @@ protected:
 	unsigned int	_armorDamageReduction;
 	std::string		_type;
 
-private:
-	ClapTrap();
+// private:
+// 	ClapTrap();
 
 public:
+	ClapTrap();
 	ClapTrap(std::string name);
 	ClapTrap(ClapTrap const & src);
 	virtual ~ClapTrap();

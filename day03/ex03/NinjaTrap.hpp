@@ -15,6 +15,8 @@
 
 # include <iostream>
 # include "ClapTrap.hpp"
+# include "FragTrap.hpp"
+# include "ScavTrap.hpp"
 
 #define CLR_WHT_U "\033[4;37m"
 #define CLR_GRN "\033[0;32m"
@@ -32,12 +34,15 @@ private:
 public:
 	NinjaTrap(std::string name);
 	NinjaTrap(NinjaTrap const & src);
-	~NinjaTrap();
+	virtual ~NinjaTrap();
 
 	NinjaTrap &	operator=(NinjaTrap const & src);
 
 	// Special move
-	void	ninjaShoebox(std::string const & target);
+	void	ninjaShoebox(ClapTrap const & target);
+	void	ninjaShoebox(FragTrap const & target);
+	void	ninjaShoebox(ScavTrap const & target);
+	void	ninjaShoebox(NinjaTrap const & target);
 };
 
 #endif
