@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Enemy.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngonzo <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:57:37 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/17 20:57:39 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/19 17:35:33 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,14 @@ Enemy &		Enemy::operator=(Enemy const & src)
 	return *this;
 }
 
-Enemy::~Enemy() { }
-	// { delete this; }
+Enemy::~Enemy()
+{
+	if (this->_hp > 0)
+	{
+		std::cout << this->_type << " went into the sunset!" << std::endl;
+		return ;
+	}
+}
 
 std::string const &	Enemy::getType() const
 	{ return this->_type; }

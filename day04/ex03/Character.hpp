@@ -5,41 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/17 20:57:26 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 17:24:09 by ngonzo           ###   ########.fr       */
+/*   Created: 2021/03/19 19:14:20 by ngonzo            #+#    #+#             */
+/*   Updated: 2021/03/19 20:12:15 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
 
-# include <iostream>
-# include "AWeapon.hpp"
-# include "Enemy.hpp"
+# include "ICharacter.hpp"
 
-class Character
+class Character : public ICharacter
 {
 private:
 	std::string		_name;
-	int				_AP;
-	AWeapon*		_weapon;
-	Character();
-	
+	AMateria*		_materia[4];
+	int				_equip;
+
 public:
-	Character(std::string const & name);
+	Character() {}
+	Character(std::string const &name);
 	Character(Character const & src);
 	Character &		operator=(Character const & src);
 	virtual ~Character();
 
-	std::string const &	getName() const;
-	int					getAP() const;
-	AWeapon*	getWeaponInfo() const;
 
-	void	recoverAP();
-	void	equip(AWeapon* weapon);
-	void	attack(Enemy* enemy);
+	std::string const &		getName() const;
+	void					equip(AMateria* materia);
+	void					unequip(int materiaNumber);
+	void					use(int materiaNumber, ICharacter& target);
 };
-
-std::ostream &		operator<<(std::ostream & out, Character const & src);
 
 #endif

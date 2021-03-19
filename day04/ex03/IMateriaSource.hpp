@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AWeapon.hpp                                        :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/17 20:57:02 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 17:24:52 by ngonzo           ###   ########.fr       */
+/*   Created: 2021/03/19 19:14:31 by ngonzo            #+#    #+#             */
+/*   Updated: 2021/03/19 19:28:24 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AWEAPON_HPP
-# define AWEAPON_HPP
+#ifndef IMATERIASOURCE_HPP
+# define IMATERIASOURCE_HPP
 
 # include <iostream>
+# include "AMateria.hpp"
 
-class AWeapon
+class	IMateriaSource
 {
-protected:
-	std::string		_name;
-	int				_apcost;
-	int				_damage;
-	AWeapon();
-
 public:
-	AWeapon(std::string const & name, int apcost, int damage);
-	AWeapon(AWeapon const & src);
-	AWeapon &	operator=(AWeapon const & src);
-	virtual ~AWeapon();
+	virtual ~IMateriaSource() {}
 
-	std::string const &	getName() const;
-	int		getAPCost() const;
-	int		getDamage() const;
-	
-	virtual void	attack() const = 0;
+	virtual void		learnMateria(AMateria*) = 0;
+	virtual AMateria*	createMateria(std::string const & type) = 0;
 };
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngonzo <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:57:13 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/17 20:57:14 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/19 17:36:50 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,23 @@ AWeapon*		Character::getWeaponInfo() const
 
 void	Character::attack(Enemy* enemy)
 {
-	int weaponAPCost;
-	int weaponDamage;
+	int weaponAPCost = this->_weapon->getAPCost();
+	int weaponDamage = this->_weapon->getDamage();
 
-	weaponAPCost = this->_weapon->getAPCost();
+	
 	if (!enemy || !this->_weapon)
+	{
+		std::cout << this->_name << " has no enemy or no weapons!" << std::endl;
 		return ;
+	}
 	if (this->_AP < weaponAPCost)
+	{
+		std::cout << this->_name << " doesn't have enough action points to attack!" << std::endl;
 		return ;
+	}
 	this->_AP -= weaponAPCost;
 	std::cout << this->_name << " attacks " << enemy->getType() << " with a " << this->_weapon->getName() << std::endl;
 	this->_weapon->attack();
-	weaponDamage = this->_weapon->getDamage();
 	enemy->takeDamage(weaponDamage);
 	if ((enemy->getHP()) == 0)
 		delete enemy;

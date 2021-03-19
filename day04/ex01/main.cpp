@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngonzo <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:52:49 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/17 20:52:52 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/19 17:40:05 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,14 @@
 #include "PowerFist.hpp"
 #include "RadScorpion.hpp"
 #include "SuperMutant.hpp"
+#include "Magnum.hpp"
+#include "GoldenGekko.hpp"
+
 
 int			main()
 {
+	std::cout << CLR_YLW"\n---subject main---"CLR_END << std::endl;
+	// subject main -----
 	{
 	Character* me = new Character("me");
 
@@ -49,6 +54,33 @@ int			main()
 	std::cout << *me;
 	me->attack(b);
 	std::cout << *me;
+
+	delete me;
+	delete pr;
+	delete pf;
+	}
+	// additional main -----
+	std::cout << CLR_YLW"\n--- additional main #1 test new enemy and weapon ---"CLR_END << std::endl;
+	{
+	Character* hero = new Character("Tony");
+	std::cout << *hero;
+	AWeapon* weapon = new Magnum();
+	hero->equip(weapon);
+	Enemy* enemy = new GoldenGekko();
+	Enemy* enemy2 = new SuperMutant();
+	std::cout << *hero;
+	hero->attack(enemy);
+	std::cout << *hero;
+	hero->attack(enemy);
+	std::cout << *hero;
+	hero->attack(enemy2);
+	std::cout << *hero;
+	hero->attack(enemy2);
+	std::cout << *hero;
+
+	delete enemy2;
+	delete hero;
+	delete weapon;
 	}
 	return 0;
 }

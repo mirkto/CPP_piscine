@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SuperMutant.cpp                                    :+:      :+:    :+:   */
+/*   GoldenGekko.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/17 20:59:03 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 17:38:10 by ngonzo           ###   ########.fr       */
+/*   Created: 2021/03/19 16:57:18 by ngonzo            #+#    #+#             */
+/*   Updated: 2021/03/19 16:57:19 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "SuperMutant.hpp"
+#include "GoldenGekko.hpp"
 
-SuperMutant::SuperMutant()
+GoldenGekko::GoldenGekko()
 {
-	std::cout << "Gaaah. Me want smash heads!" << std::endl;
-	this->_type = "Super Mutant";
-	this->_hp = 170;
+	std::cout << "* GECK-O GECK-O GECK-O *" << std::endl;
+	this->_type = "Golden Gekko";
+	this->_hp = 120;
 }
 
-SuperMutant::SuperMutant(SuperMutant const & src)
+GoldenGekko::GoldenGekko(GoldenGekko const & src)
 	{ *this = src; }
 
-SuperMutant &	SuperMutant::operator=(SuperMutant const & src)
+GoldenGekko &	GoldenGekko::operator=(GoldenGekko const & src)
 {
 	this->_type = src._type;
 	this->_hp = src._hp;
 	return *this;
 }
 
-SuperMutant::~SuperMutant()
-{
-	if (this->_hp == 0)
-		std::cout <<  "Aaargh..." << std::endl;
-}
+GoldenGekko::~GoldenGekko()
+	{ std::cout <<  "* geeckk-ooooo... *" << std::endl; }
 
-void	SuperMutant::takeDamage(int damage)
-	{ Enemy::takeDamage(damage - 3); }
+void	GoldenGekko::takeDamage(int damage)
+	{ Enemy::takeDamage(damage); }

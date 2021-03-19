@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PowerFist.cpp                                      :+:      :+:    :+:   */
+/*   Magnum.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/17 20:58:37 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 17:20:21 by ngonzo           ###   ########.fr       */
+/*   Created: 2021/03/19 16:47:54 by ngonzo            #+#    #+#             */
+/*   Updated: 2021/03/19 16:51:20 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PowerFist.hpp"
+#include "Magnum.hpp"
 
-PowerFist::PowerFist()
+Magnum::Magnum()
 {
-	this->_name = "Power Fist";
-	this->_apcost = 8;
-	this->_damage = 50;
+	this->_name = "Magnum";
+	this->_apcost = 13;
+	this->_damage = 100;
 }
 
-PowerFist::PowerFist(PowerFist const & src)
+Magnum::Magnum(Magnum const & src)
 {
 	*this = src;
 }
 
-PowerFist &	PowerFist::operator=(PowerFist const & src)
+Magnum &	Magnum::operator=(Magnum const & src)
 {
 	this->_name = src._name;
 	this->_apcost = src._apcost;
@@ -32,7 +32,7 @@ PowerFist &	PowerFist::operator=(PowerFist const & src)
 	return *this;
 }
 
-PowerFist::~PowerFist() { }
+Magnum::~Magnum() { }
 
-void	PowerFist::attack() const
-	{ std::cout << "* pschhh... SBAM! *" << std::endl; }
+void	Magnum::attack() const
+	{ std::cout << "* BAAM! *" << std::endl; }
