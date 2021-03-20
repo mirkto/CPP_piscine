@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:14:22 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 20:10:44 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/20 18:01:31 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Cure::Cure(Cure const & src) : AMateria("cure")
 
 Cure &Cure::operator=(Cure const & src)
 {
-	_xp = src._xp;;
+	this->_xp = src._xp;;
 	return (*this);
 }
 
@@ -28,4 +28,4 @@ void		Cure::use(ICharacter & target)
 }
 
 AMateria*		Cure::clone() const
-	{ return (new Cure); }
+	{ return new Cure; }

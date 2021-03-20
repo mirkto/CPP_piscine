@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:52:57 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 19:09:45 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/20 16:41:07 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "ISquad.hpp"
 # include "TacticalMarine.hpp"
 # include "AssaultTerminator.hpp"
+# include "Necron.hpp"
 
 class Squad : public ISquad
 {
@@ -33,7 +34,9 @@ public:
 	virtual int		getCount(void) const;
 	virtual ISpaceMarine*	getUnit(int unit) const;
 
-	virtual int		push(ISpaceMarine* numberUnits);
+	virtual int		push(ISpaceMarine* newUnit);
+
+	virtual void			rollCall() const;
 };
 
 #endif

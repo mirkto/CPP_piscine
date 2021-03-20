@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:52:55 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 19:02:27 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/20 16:42:32 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,77 @@
 
 Squad::Squad()
 {
-	_numberUnits = 0;
-	_unit = NULL;
+	this->_numberUnits = 0;
+	this->_unit = NULL;
 }
 
 Squad::~Squad()
 {
 	if (_unit)
 	{
-		for (int i = 0; i < _numberUnits; i++)
-			delete _unit[i];
-		delete[] _unit;
+		for (int i = 0; i < this->_numberUnits; i++)
+			delete this->_unit[i]; // если не сделать, будут лики
+		delete[] this->_unit;
 	}
 }
 
-Squad::Squad(const Squad &src)
-{
-	_numberUnits = 0;
-	_unit = NULL;
-	for(int i = 0; i < src.getCount(); i++)
-		push(src.getUnit(i)->clone());
-}
+Squad::Squad(Squad const & src)
+	{ *this = src; }
 
-Squad &Squad::operator=(const Squad &src)
+Squad &			Squad::operator=(Squad const & src)
 {
-	if (_unit)
+	if (this->_unit)
 	{
-		for (int i = 0; i < _numberUnits; i++)
-			delete _unit[i];
-		delete _unit;
-		_unit = NULL;
+		for (int i = 0; i < this->_numberUnits; i++)
+			delete this->_unit[i];
+		delete this->_unit;
+		this->_unit = NULL;
 	}
-	_numberUnits = 0;
-	for (int i = 0; i < src.getCount(); i++)
+	this->_numberUnits = src.getCount();
+	for (int i = 0; i < this->_numberUnits; i++)
 		this->push(src.getUnit(i)->clone());
 	return(*this);
 }
 
-int	Squad::getCount(void) const
-	{ return (_numberUnits); }
+int				Squad::getCount(void) const
+	{ return this->_numberUnits; }
 
-ISpaceMarine* Squad::getUnit(int unit) const
+ISpaceMarine*	Squad::getUnit(int unit) const
 {
-	if (unit > (_numberUnits - 1) || unit < 0)
+	if (unit > (this->_numberUnits - 1) || unit < 0)
+	{
+		std::cout << "Unit is missing!" << std::endl;
 		return (NULL);
-	return (_unit[unit]);
+	}
+	return this->_unit[unit];
 }
 
-int Squad::push(ISpaceMarine* numberUnits)
+int				Squad::push(ISpaceMarine* newUnit)
 {
-	int i;
-	ISpaceMarine** newUnits = new ISpaceMarine*[_numberUnits + 1];
+	if (newUnit == NULL)
+	{
+		std::cout << "Unit is missing!" << std::endl;
+		return this->_numberUnits;
+	}
 
-	for (i = 0; i < _numberUnits; i++)
-		newUnits[i] = _unit[i];
-	newUnits[i] = numberUnits;
-	if (_unit != NULL)
-		delete[] _unit;
-	_unit = newUnits;
-	return (_numberUnits++);
+	ISpaceMarine** newUnits = new ISpaceMarine*[this->_numberUnits + 1];
+	for (int i = 0; i < this->_numberUnits; i++)
+		newUnits[i] = this->_unit[i];
+	newUnits[this->_numberUnits] = newUnit;
+	if (this->_unit != NULL)
+		delete[] this->_unit;
+	this->_unit = newUnits;
+	return (this->_numberUnits++);
+}
+
+void			Squad::rollCall() const
+{
+	for (int i = 0; i < this->_numberUnits; i++)
+	{
+		// this->_unit[i]->getName(); // хотя он есть в Некрон, не будет работать потому что нет в интерфейсе
+		this->_unit[i]->battleCry();
+		this->_unit[i]->meleeAttack();
+		this->_unit[i]->rangedAttack();
+		std::cout << std::endl;
+	}
 }

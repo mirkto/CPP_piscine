@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:52:48 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 19:09:12 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/20 14:50:45 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ public:
 	AssaultTerminator();
 	AssaultTerminator(AssaultTerminator const & src);
 	AssaultTerminator &		operator=(AssaultTerminator const  & src);
+
 	virtual ~AssaultTerminator();
 
 	virtual ISpaceMarine*	clone() const;

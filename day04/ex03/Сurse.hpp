@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ISpaceMarine.hpp                                   :+:      :+:    :+:   */
+/*   Сurse.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/19 17:52:51 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/20 15:57:17 by ngonzo           ###   ########.fr       */
+/*   Created: 2021/03/20 18:05:36 by ngonzo            #+#    #+#             */
+/*   Updated: 2021/03/20 19:09:51 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ISPACEMARINE_HPP
-# define ISPACEMARINE_HPP
+#ifndef СURSE_HPP
+# define СURSE_HPP
 
-# include <iostream>
+# include "AMateria.hpp"
 
-class ISpaceMarine
+class Сurse : public AMateria
 {
 public:
-	virtual ~ISpaceMarine() {}
+	Сurse() : AMateria("curse") {}
+	Сurse(Сurse const & src);
+	Сurse &operator=(Сurse const & src);
+	virtual ~Сurse() {}
 
-	virtual ISpaceMarine*	clone() const = 0;
-	virtual void	battleCry() const = 0;
-	virtual void	rangedAttack() const = 0;
-	virtual void	meleeAttack() const = 0;
+	void			use(ICharacter & target);
+	AMateria*		clone() const;
 };
 
 #endif

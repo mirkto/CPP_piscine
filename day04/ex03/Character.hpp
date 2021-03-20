@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:14:20 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 20:12:15 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/20 20:05:36 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ public:
 	void					equip(AMateria* materia);
 	void					unequip(int materiaNumber);
 	void					use(int materiaNumber, ICharacter& target);
+
+	unsigned int			getXP(int materiaNumber) const;// для того чтобы узанть сколько опыта у материи
 };
 
 #endif

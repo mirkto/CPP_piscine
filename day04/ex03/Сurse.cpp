@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ISpaceMarine.hpp                                   :+:      :+:    :+:   */
+/*   Сurse.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/19 17:52:51 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/20 15:57:17 by ngonzo           ###   ########.fr       */
+/*   Created: 2021/03/20 18:05:38 by ngonzo            #+#    #+#             */
+/*   Updated: 2021/03/20 19:06:43 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ISPACEMARINE_HPP
-# define ISPACEMARINE_HPP
+#include "Сurse.hpp"
 
-# include <iostream>
+Сurse::Сurse(Сurse const & src) : AMateria("curse")
+	{ *this = src; }
 
-class ISpaceMarine
+Сurse &	Сurse::operator=(Сurse const & src)
 {
-public:
-	virtual ~ISpaceMarine() {}
+	this->_xp = src._xp;;
+	return (*this);
+}
 
-	virtual ISpaceMarine*	clone() const = 0;
-	virtual void	battleCry() const = 0;
-	virtual void	rangedAttack() const = 0;
-	virtual void	meleeAttack() const = 0;
-};
+void		Сurse::use(ICharacter & target)
+{
+	AMateria::use(target);
+	std::cout << "* curses " << target.getName() << "’s and turns into a frog *" << std::endl;
+}
 
-#endif
+AMateria*		Сurse::clone() const
+	{ return new Сurse; }

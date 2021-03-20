@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:52:49 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 17:40:05 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/19 21:05:27 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 #include "SuperMutant.hpp"
 #include "Magnum.hpp"
 #include "GoldenGekko.hpp"
-
 
 int			main()
 {

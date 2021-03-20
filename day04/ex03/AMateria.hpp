@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:14:16 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 20:11:10 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/20 20:01:53 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ public:
 	virtual ~AMateria() {}
 
 	std::string const &		getType() const; //Returns the materia type
-	unsigned int			getXP() const; //Returns the Materia's XP
+	virtual unsigned int	getXP() const; //Returns the Materia's XP
 
 	virtual AMateria*		clone() const = 0;
 	virtual void			use(ICharacter& target);

@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:14:30 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 19:45:30 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/20 20:00:07 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ public:
 	virtual void	equip(AMateria* m) = 0;
 	virtual void	unequip(int idx) = 0;
 	virtual void	use(int idx, ICharacter& target) = 0;
+
+	virtual unsigned int			getXP(int materiaNumber) const = 0;// для того чтобы узанть сколько опыта у материи
 };
 
 #endif

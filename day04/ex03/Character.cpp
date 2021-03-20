@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:14:17 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 20:12:09 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/20 20:05:14 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,67 +14,76 @@
 
 Character::Character(std::string const & name)
 {
-	_name = name;
-	_equip = 0;
+	this->_name = name;
+	this->_equip = 0;
 	for (int i = 0; i < 4; i++)
-		_materia[i] = NULL;
+		this->_materia[i] = NULL;
 }
 
 Character::~Character()
 {
-	for (int i = 0; i < _equip; i++)
-		delete _materia[i];
+	for (int i = 0; i < this->_equip; i++)
+		delete this->_materia[i];
 }
 
 Character::Character(Character const & src)
 {
 	for (int i = 0; i < src._equip; i++)
 		equip(src._materia[i]->clone());
-	for (int i = _equip; i < 4; i++)
-		_materia[i] = NULL;
+	for (int i = this->_equip; i < 4; i++)
+		this->_materia[i] = NULL;
 }
 
 Character &		Character::operator=(Character const & src)
 {
-	_name = src._name;
-	for (int i = 0; i < _equip; i++)
-		delete _materia[i];
-	_equip = 0;
+	this->_name = src._name;
+	for (int i = 0; i < this->_equip; i++)
+		delete this->_materia[i];
+	this->_equip = 0;
 	for (int i = 0; i < src._equip; i++)
 		equip(src._materia[i]->clone());
 	for (int i = _equip; i < 4; i++)
-		_materia[i] = NULL;
+		this->_materia[i] = NULL;
 	return (*this);
 }
 
 std::string const &		Character::getName() const
-	{ return (_name); }
+	{ return this->_name; }
 
 void Character::equip(AMateria* materia)
 {
-	if (!materia || _equip > 3)
-		return ;
-	for (int i = 0; i < _equip; i++)
-		if (_materia[i] == materia)
-			return ;
-	_materia[_equip++] = materia;
+	if (!materia)
+		std::cout << "! empty matter !" << std::endl;
+	else if (this->_equip > 3)
+		std::cout << "! no free slots !" << std::endl;
+	else 
+	{
+		for (int i = 0; i < this->_equip; i++)
+			if (this->_materia[i] == materia)
+				return ;
+		this->_materia[this->_equip] = materia;
+		this->_equip++;
+	}
 }
 
 void		Character::unequip(int materiaNumber)
 {
-	if (materiaNumber < 0 || materiaNumber > _equip || !_materia[materiaNumber])
+	if (materiaNumber < 0 || materiaNumber > this->_equip || !this->_materia[materiaNumber])
 		return ;
 	for (int i = materiaNumber; i < 3; i++)
 	{
-		_materia[i] = _materia[i + 1];
-		_materia[i + 1] = NULL;
+		this->_materia[i] = this->_materia[i + 1];
+		this->_materia[i + 1] = NULL;
 	}
-	_equip--;
+	this->_equip--;
 }
 
 void		Character::use(int materiaNumber, ICharacter &target)
 {
-	if (materiaNumber < 0 || materiaNumber >= _equip || !_materia[materiaNumber])
+	if (materiaNumber < 0 || materiaNumber >= this->_equip || !this->_materia[materiaNumber])
 		return ;
-	_materia[materiaNumber]->use(target);
+	this->_materia[materiaNumber]->use(target);
 }
+
+unsigned int		Character::getXP(int materiaNumber) const
+	{ return this->_materia[materiaNumber]->getXP(); }

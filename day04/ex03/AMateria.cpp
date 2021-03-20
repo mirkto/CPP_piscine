@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:14:13 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 20:11:13 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/20 20:00:52 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 AMateria::AMateria(std::string const & type)
 {
-	_xp = 0;
-	_type = type;
+	this->_xp = 0;
+	this->_type = type;
 }
 
 AMateria::AMateria(const AMateria& src)
@@ -23,19 +23,19 @@ AMateria::AMateria(const AMateria& src)
 
 AMateria &		AMateria::operator=(const  AMateria &src)
 {
-	_xp = src._xp;
-	_type = src._type;
+	this->_xp = src._xp;
+	this->_type = src._type;
 	return (*this);
 }
 
 std::string const & AMateria::getType() const
-	{ return (_type); }
+	{ return this->_type; }
 
 unsigned int	AMateria::getXP() const
-	{ return (_xp); }
+	{ return this->_xp; }
 
 void	AMateria::use(ICharacter& target)
 {
 	(void)target;
-	_xp += 10;
+	this->_xp += 10;
 }

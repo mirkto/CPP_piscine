@@ -6,18 +6,18 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:14:28 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/19 20:10:10 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/20 18:01:51 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
 Ice::Ice(Ice const & src) : AMateria("ice")
-	{ _xp = src._xp; }
+	{ this->_xp = src._xp; }
 
 Ice	&Ice::operator=(Ice const & src)
 {
-	_xp = src._xp;
+	this->_xp = src._xp;
 	return(*this);
 }
 
@@ -28,4 +28,4 @@ void		Ice::use(ICharacter & target)
 }
 
 AMateria*		Ice::clone() const
-	{ return (new Ice); }
+	{ return new Ice; }
