@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:14:33 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/20 20:07:57 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/20 20:22:53 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include "Character.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
-#include "Сurse.hpp"
+#include "Curse.hpp"
 
 int		main()
 {
@@ -55,7 +55,7 @@ int		main()
 		IMateriaSource* src = new MateriaSource();
 		src->learnMateria(new Ice());
 		src->learnMateria(new Cure());
-		src->learnMateria(new Сurse());
+		src->learnMateria(new Curse());
 
 		ICharacter* me = new Character("me");
 
@@ -107,7 +107,7 @@ int		main()
 		IMateriaSource* src = new MateriaSource();
 		src->learnMateria(new Ice());
 		src->learnMateria(new Cure());
-		src->learnMateria(new Сurse());
+		src->learnMateria(new Curse());
 
 		ICharacter* me = new Character("me");
 
