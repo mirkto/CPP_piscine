@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Сurse.hpp                                          :+:      :+:    :+:   */
+/*   Curse.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 18:05:36 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/20 19:09:51 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/20 20:18:16 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 # include "AMateria.hpp"
 
-class Сurse : public AMateria
+class Curse : public AMateria
 {
 public:
-	Сurse() : AMateria("curse") {}
-	Сurse(Сurse const & src);
-	Сurse &operator=(Сurse const & src);
-	virtual ~Сurse() {}
+	Curse() : AMateria("curse") {}
+	Curse(Curse const & src);
+	Curse &operator=(Curse const & src);
+	virtual ~Curse() {}
 
 	void			use(ICharacter & target);
 	AMateria*		clone() const;
