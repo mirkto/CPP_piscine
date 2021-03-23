@@ -83,7 +83,7 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat(void) const
 {
-	// return (float)this->_rawBits / POW_2_TO_8;
+
 	return (float)this->_rawBits / (1 << Fixed::_shift);
 }
 
