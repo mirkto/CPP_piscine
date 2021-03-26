@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 13:59:48 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/24 21:05:37 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/25 16:07:43 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,165 +23,89 @@
 
 int		main()
 {
-	PRINT(CLR_YLW " -- Testing incrementGrade/decrementGrade:" CLR_END)
-	Bureaucrat boris("Boris", 21);
+	Bureaucrat boris("Boris", 100);
+
+	PRINT("\n" CLR_YLW " -- Testing form and form.sign :" CLR_END)
+	Form formA("Form A", 100, 50);
+	PRINT(formA)
 	PRINT(boris)
-	boris.incrementGrade();
+	formA.beSigned(boris);
+	PRINT(formA)
+
+	PRINT("\n" CLR_YLW " -- Testing wrong Bureaucrat.sign :" CLR_END)
 	PRINT(boris)
-	boris.decrementGrade();
+	Form formB("Form B", 99, 50);
+	PRINT(formB)
+	try {
+		boris.signForm(formB); }
+	catch(std::exception const &e) {
+		PRINT(e.what()) }
+	std::cout << formB << std::endl;
+
+	PRINT("\n" CLR_YLW " -- Testing double Bureaucrat.sign :" CLR_END)
+	Form formC("Form C", 101, 50);
+	PRINT(formC)
 	PRINT(boris)
+	boris.signForm(formC);
+	PRINT(formC)
+	try {
+		boris.signForm(formC); }
+	catch(std::exception const &e) {
+		PRINT(e.what()) }
+	PRINT(formC)
 
-	PRINT("\n" CLR_YLW " -- Testing copy:" CLR_END)
-	Bureaucrat test_copy(boris);
-	PRINT(test_copy)
-
-	PRINT("\n" CLR_YLW " -- Testing assignation:" CLR_END)
-	Bureaucrat eltsin("Eltsin", 21);
-	PRINT(eltsin)
-	eltsin = boris;
-	PRINT(eltsin)
-
-	PRINT("\n" CLR_YLW " -- Testing creating with wrong big grade:" CLR_END)
+	PRINT("\n" CLR_YLW " -- Testing Exceptions :" CLR_END)
+	PRINT(CLR_YLW "1 - wrong form.sign:" CLR_END)
 	try
 	{
-		Bureaucrat test_big_grade("test_big_grade", 0);
-		PRINT(test_big_grade)
-	}
-	catch(std::exception const &e)
-	{
-		PRINT(e.what())
-	}
-
-	PRINT("\n" CLR_YLW " -- Testing creating with wrong low grade:" CLR_END)
-	try
-	{
-		Bureaucrat test_low_grade("test_low_grade", 1000);
-		PRINT(test_low_grade)
-	}
-	catch(std::exception const &e)
-	{
-		PRINT(e.what())
-	}
-
-	PRINT("\n" CLR_YLW " -- Testing wrong incrementGrade:" CLR_END)
-	try
-	{
-		Bureaucrat boris("Boris", 1);
-		PRINT(boris)
-		boris.incrementGrade();
-		PRINT(boris)
-	}
-	catch(std::exception const &e)
-	{
-		PRINT(e.what())
-	}
-	
-	PRINT("\n" CLR_YLW " -- Testing wrong decrementGrade:" CLR_END)
-	try
-	{
-		Bureaucrat boris("Boris", 150);
-		PRINT(boris)
-		boris.decrementGrade();
-		PRINT(boris)
-	}
-	catch(std::exception const &e)
-	{
-		PRINT(e.what())
-	}
-
-	// ------------------------------------ ex01
-
-	PRINT("\n" CLR_YLW " -- Testing form and signed:" CLR_END)
-	Form taxes("Taxes", 100, 50);
-	PRINT(taxes)
-	taxes.beSigned(boris);
-	PRINT(taxes)
-
-	PRINT("\n" CLR_YLW " -- Testing wrong signing from dmitry:" CLR_END)
-	Form nda("NDA", 99, 50);
-	PRINT(nda)
-	try
-	{
-		boris.signForm(nda);
-	}
-	catch(std::exception const &e)
-	{
-		PRINT(e.what())
-	}
-	std::cout << nda << std::endl;
-
-	PRINT("\n" CLR_YLW " -- Testing wrong signing for other_paper:" CLR_END)
-	Form otherpaper("Other Paper", 101, 50);
-	PRINT(otherpaper)
-	boris.signForm(otherpaper);
-	PRINT(otherpaper)
-	try
-	{
-		boris.signForm(otherpaper);
-	}
-	catch(std::exception const &e)
-	{
-		PRINT(e.what())
-	}
-	PRINT(otherpaper)
-
-	PRINT("\n" CLR_YLW " -- Testing wrong signing for form Exception:" CLR_END)
-	try
-	{
-		Form formException("NDA", 99, 50);
+		Form formException("form E", 99, 50);
 		PRINT(formException)
+		PRINT(boris)
 		formException.beSigned(boris);
 		PRINT(formException)
 	}
-	catch(std::exception const &e)
-	{
-		PRINT(e.what())
-	}
+	catch(std::exception const &e) {
+		PRINT(e.what()) }
 
-	PRINT("\n" CLR_YLW " -- Testing wrong signing for Important_Form:" CLR_END)
+	PRINT("\n" CLR_YLW "2 - create wrong Grade For Sign:" CLR_END)
 	try
 	{
-		Form formException("Important_Form", 1000, 50);
+		PRINT("Try create wrong form with Grade For Sign-1000")
+		Form formException("form E", 1000, 50);
 		PRINT(formException)
 	}
-	catch(std::exception const &e)
-	{
-		PRINT(e.what())
-	}
+	catch(std::exception const &e) {
+		PRINT(e.what()) }
 
-	PRINT("\n" CLR_YLW " -- Testing wrong signing for Important_Form:" CLR_END)
+	PRINT("\n" CLR_YLW "3 - create wrong gradeForSign:" CLR_END)
 	try
 	{
-		Form formException("Important_Form", 0, 50);
+		PRINT("Try create wrong form with Grade For Sign-0")
+		Form formException("form E", 0, 50);
 		PRINT(formException)
 	}
-	catch(std::exception const &e)
-	{
-		PRINT(e.what())
-	}
+	catch(std::exception const &e) {
+		PRINT(e.what()) }
 
-	PRINT("\n" CLR_YLW " -- Testing wrong signing for Important_Form:" CLR_END)
+	PRINT("\n" CLR_YLW "4 - create wrong gradeForExecute:" CLR_END)
 	try
 	{
-		Form formException("Important_Form", 100, 1000);
+		PRINT("Try create wrong form with Grade For Execute-1000")
+		Form formException("form E", 100, 1000);
 		PRINT(formException)
 	}
-	catch(std::exception const &e)
-	{
-		PRINT(e.what())
-	}
+	catch(std::exception const &e) {
+		PRINT(e.what()) }
 
-	PRINT("\n" CLR_YLW " -- Testing wrong signing for Important_Form:" CLR_END)
+	PRINT("\n" CLR_YLW "5 - create wrong Grade For Execute:" CLR_END)
 	try
 	{
-		Form formException("Important Form", 100, 0);
+		PRINT("Try create wrong form with Grade For Execute-0")
+		Form formException("form E", 100, 0);
 		PRINT(formException)
 	}
-	catch(std::exception const &e)
-	{
-		PRINT(e.what())
-	}
-
+	catch(std::exception const &e) {
+		PRINT(e.what()) }
 
 	return (0);
 }

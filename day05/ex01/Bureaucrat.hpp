@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 14:01:31 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/24 20:46:38 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/25 12:04:04 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Bureaucrat;
 class Bureaucrat
 {
 private:
-	std::string			_name;
+	std::string const	_name;
 	int					_grade;
 	Bureaucrat();
 public:

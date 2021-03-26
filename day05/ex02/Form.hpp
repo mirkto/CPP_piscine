@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:25:46 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/25 18:48:19 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/25 18:54:41 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FORM_HPP
 
 # include <iostream>
+# include <fstream>
 # include <string>
 
 class Form;
@@ -26,8 +27,8 @@ private:
 	bool				_signed;
 	int const			_gradeForSign;
 	int const			_gradeForExecute;
-	Form();
 public:
+	Form();
 	Form(std::string const name, int const signGrade, int const executeGrade);
 	Form(Form const & src );
 	virtual ~Form();
@@ -40,12 +41,16 @@ public:
 
 	bool					checkSigned(void) const;
 	void					beSigned(Bureaucrat const & src);
+	virtual void			execute(Bureaucrat const & executor) const = 0;
 
 	class GradeTooHighException: public std::exception
 	{ virtual const char	*what() const throw(); };
 
 	class GradeTooLowException: public std::exception
 	{ virtual const char	*what() const throw(); };
+
+	class UnsignedException: public std::exception
+	{ virtual const char* what() const throw(); };
 };
 
 std::ostream &			operator<<(std::ostream & o, Form const & i );

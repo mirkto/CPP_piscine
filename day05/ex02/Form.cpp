@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:25:44 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/25 16:49:58 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/25 18:51:55 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Form::Form() : _gradeForSign(1), _gradeForExecute(1) { }
+Form::Form() : _name("name"), _signed(false), _gradeForSign(1), _gradeForExecute(1) { }
 
 Form::Form(std::string const name, int const signGrade, int const executeGrade) : 
 	_name(name), _signed(false), _gradeForSign(signGrade), _gradeForExecute(executeGrade)
@@ -80,6 +80,9 @@ const char*			Form::GradeTooLowException::what() const throw()
 
 const char*			Form::GradeTooHighException::what() const throw()
 	{ return "\033[0;31m" "Form Exception: Grade too High" "\033[0m"; }
+
+const char* Form::UnsignedException::what() const throw()
+	{ return  "\033[0;31m" "Form Exception: Form not signed" "\033[0m"; }
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

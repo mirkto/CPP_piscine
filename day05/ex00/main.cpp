@@ -6,7 +6,7 @@
 /*   By: ngonzo <ngonzo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 13:59:48 by ngonzo            #+#    #+#             */
-/*   Updated: 2021/03/24 19:19:47 by ngonzo           ###   ########.fr       */
+/*   Updated: 2021/03/25 11:53:43 by ngonzo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		main()
 	PRINT(test_copy)
 
 	PRINT("\n" CLR_YLW " -- Testing assignation:" CLR_END)
-	Bureaucrat eltsin("Eltsin", 21);
+	Bureaucrat eltsin("Eltsin", 42);
 	PRINT(eltsin)
 	eltsin = boris;
 	PRINT(eltsin)
