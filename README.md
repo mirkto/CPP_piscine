@@ -1,1 +1,2 @@
-# CPP_piscine
+# CPP_piscine - basics of OOP and C++ language.
+This project is a quick introdution to Object Oriented Programming, as well as elementary knowledge about C++. The first week is focused on OOP concepts, while the second week focuses on more C++ specific features.
